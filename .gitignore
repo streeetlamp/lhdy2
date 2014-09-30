@@ -12,3 +12,4 @@ npm-debug.log
 build/
 app/*.html
 app/css/*.css
+app/js/main.js
