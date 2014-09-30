@@ -103,8 +103,8 @@ module.exports = function(grunt) {
                 dest: 'build/js/main.js'
             },
             modernizr: {
-                src: '',
-                dest: ''
+                src: 'app/js/modernizr.2.8.3.min.js',
+                dest: 'build/js/modernizr.2.8.3.min.js'
             }
         },
 
