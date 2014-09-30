@@ -101,6 +101,10 @@ module.exports = function(grunt) {
             scripts: {
                 src: 'app/js/main.js',
                 dest: 'build/js/main.js'
+            },
+            modernizr: {
+                src: '',
+                dest: ''
             }
         },
 
@@ -234,10 +238,10 @@ module.exports = function(grunt) {
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
 
     // compiles sass once
-    grunt.registerTask('default', ['browserSync','watch']); 
+    grunt.registerTask('dev', ['browserSync','watch']); 
 
     // cleans directories, does everything for css, js, and images for deploy
-    grunt.registerTask('prod', ['includes','imagemin', 'compass:dist', 'autoprefixer', 'cmq', 'cssmin', 'concat', 'uglify','includes:build','devcode:dist','htmlmin']);
+    grunt.registerTask('build', ['includes','imagemin', 'compass:dist', 'autoprefixer', 'cmq', 'cssmin', 'concat', 'uglify','includes:build','devcode:dist','htmlmin']);
 
     // T4 template tags
     grunt.registerTask('t4', ['grunt-text-replace']);
