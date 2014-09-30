@@ -11,4 +11,4 @@ npm-debug.log
 # ignore generated files
 build/
 app/*.html
-app/css/
+app/css/*.css
