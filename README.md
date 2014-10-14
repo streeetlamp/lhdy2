@@ -6,7 +6,7 @@ Loosely based of @jpweller's boilerplate.
 ```bash
 bundle install
 npm install
-grunt
+grunt dev
 ```
 Paste sync scripts into `app/include/parts/dev-scripts.html`
 
