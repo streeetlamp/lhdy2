@@ -6,16 +6,16 @@ Loosely based of @jpweller's boilerplate.
 ```bash
 bundle install
 npm install
-grunt dev
+grunt
 ```
 Paste sync scripts into `app/include/parts/dev-scripts.html`
 
 Work in the `app` directory. 
 
-When ready for production use the prod task.
+When ready for production use the build task.
 
 ```bash
-grunt prod
+grunt build
 ```
 
 It will create a new `build` directory that is ready for deployment.
