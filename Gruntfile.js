@@ -237,7 +237,9 @@ module.exports = function(grunt) {
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
 
-    // compiles sass once
+    grunt.registerTask('init', ['compass','concat','includes:dev']);
+
+    // Run our devleoppment environment
     grunt.registerTask('dev', ['browserSync','watch']); 
 
     // cleans directories, does everything for css, js, and images for deploy
