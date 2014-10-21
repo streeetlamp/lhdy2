@@ -240,7 +240,7 @@ module.exports = function(grunt) {
     grunt.registerTask('init', ['compass','concat','includes:dev']);
 
     // Run our devleoppment environment
-    grunt.registerTask('dev', ['browserSync','watch']); 
+    grunt.registerTask('dev', ['browserSync','watch']);
 
     // cleans directories, does everything for css, js, and images for deploy
     grunt.registerTask('build', ['includes','imagemin', 'compass:dist', 'autoprefixer', 'cmq', 'cssmin', 'concat', 'uglify','includes:build','devcode:dist','htmlmin']);
