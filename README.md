@@ -3,27 +3,39 @@
 Loosely based of @jpweller's boilerplate.
 
 ## How To: 
+Get your environment up to snuff
 ```bash
 bundle install
-npm install
-grunt
 ```
-Paste sync scripts into `app/include/parts/dev-scripts.html`
+
+Install node dependencies and whatnot
+```bash
+npm install
+```
+
+Run a few tasks to initialize everything
+```bash
+grunt init
+```
+
+Time to start the dev server
+```bash
+grunt dev
+```
 
 Work in the `app` directory. 
 
-When ready for production use the prod task.
+When ready for production use the build task.
 
 ```bash
-grunt prod
+grunt build
 ```
 
 It will create a new `build` directory that is ready for deployment.
 
 ## Known Issues
 
-If grunt-contrib-imagmin fails to install properly because of pngquant see [issue](https://github.com/gruntjs/grunt-contrib-imagemin/issues/183/#issuecomment-41841391)
-
+If you're having imagemin issues make sure npm is up to date.
 
 ```
                  ____
