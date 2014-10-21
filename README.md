@@ -37,7 +37,19 @@ It will create a new `build` directory that is ready for deployment.
 
 If you're having imagemin issues make sure npm is up to date.
 
+Check your NPM version
+
+```bash 
+npm -v
 ```
+
+Update globally if needed
+
+```bash
+sudo npm update npm -g
+```
+
+```bash
                  ____
      .----------'    '-.
     /  .      '     .   \\ *
