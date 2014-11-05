@@ -1,6 +1,6 @@
 # Bread Pudding
 
-Loosely based of @jpweller's boilerplate.
+Loosely based on [jpweller's](https://github.com/jpweller) boilerplate.
 
 ## How To: 
 Get your environment up to snuff
