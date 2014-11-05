@@ -174,7 +174,11 @@ module.exports = function(grunt) {
             options: {
                 source: 'build/',
                 dest: 'build/',
-                env: 'production'
+                env: 'production',
+                block: {
+                  open: 'devcode', // with this string we open a block of code
+                  close: 'endcode' // with this string we close a block of code
+                },
             }
           }
         },
