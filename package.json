@@ -18,6 +18,6 @@
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-devcode": "latest",
-    "grunt-includes": "latest",
-  },
+    "grunt-includes": "latest"
+  }
 }
