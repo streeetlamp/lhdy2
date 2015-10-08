@@ -10,6 +10,7 @@ npm-debug.log
 
 # ignore generated files
 build/
+app/bower_components/
 app/*.html
 app/css/*.css
 app/js/main.js

@@ -24,7 +24,7 @@ module.exports = function(grunt) {
         watch: {
             scss: {
               files: ['app/scss/**/*.scss'],
-              tasks: ['sass', 'autoprefixer']
+              tasks: ['sass']
             },
             css: {
                 files: ['app/css/**/*.css']
@@ -111,22 +111,6 @@ module.exports = function(grunt) {
             }
         },
 
-        htmlmin: {                                     // Task
-          dist: {                                      // Target
-            options: {                                 // Target options
-              removeComments: true,
-              collapseWhitespace: true
-            },
-            files: [{                                   // Dictionary of files
-                expand: true,     // Enable dynamic expansion.
-                cwd: 'build/',      // Src matches are relative to this path.
-                src: ['**/*.html'], // Actual pattern(s) to match.
-                dest: 'build/',   // Destination path prefix.
-                ext: '.html',   // Dest filepaths will have this extension.
-            }]
-          }
-        },
-
         // Build the site using grunt-includes
         includes: {
           dev: {
@@ -149,41 +133,14 @@ module.exports = function(grunt) {
           }
         },
 
-        devcode : {
-          dist : {             // settings for task used with 'devcode:dist'
-            options: {
-                source: 'build/',
-                dest: 'build/',
-                env: 'production',
-                block: {
-                  open: 'devcode', // with this string we open a block of code
-                  close: 'endcode' // with this string we close a block of code
-                },
-            }
-          }
-        },
-
         concurrent: {
             watch: {
-                tasks: ['watch', 'compass', 'browserSync'],
+                tasks: ['watch', 'browserSync'],
                 options: {
                     logConcurrentOutput: true
                 }
             }
         },
-
-        copy: {
-          main: {
-            files: [
-              // includes files within path and its sub-directories
-                {
-                expand: true, 
-                src: ['app/','!build/**','!bower_components/**','!node_modules/**','!.git/**','!library/scss/**'], dest: 'build/'
-                },
-            ],
-          },
-        }, 
-
 
     });
 
@@ -202,9 +159,6 @@ module.exports = function(grunt) {
 
     // html
     grunt.loadNpmTasks('grunt-includes');
-
-    // Text Replacements
-    grunt.loadNpmTasks('grunt-devcode');
    
     // Browser Reload + File Watch
     grunt.loadNpmTasks('grunt-concurrent');
@@ -218,5 +172,5 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', ['browserSync','watch']);
 
     // cleans directories, does everything for css, js, and images for deploy
-    grunt.registerTask('build', ['autoprefixer', 'cmq', 'cssmin', 'concat', 'uglify','includes:build','devcode:dist']);
+    grunt.registerTask('build', ['includes', 'includes:build', 'sass', 'autoprefixer', 'cmq', 'cssmin', 'concat', 'uglify']);
 };

@@ -5,9 +5,10 @@ Author:
 Stylesheet: Main Stylesheet
 
 ******************************************************************/
-@import "compass";
 
-@import "susy";
+@import "../bower_components/susy/sass/susy";
+@import "../bower_components/breakpoint-sass/stylesheets/breakpoint";
+
 $susy: (
   columns: 12,
   gutters: 2/3,
