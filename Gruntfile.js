@@ -4,24 +4,27 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        compass: {
-          dist: {
-            options: {
-              cssDir: 'app/css',
-              sassDir: 'app/scss',
-              environment: 'development',
-              relativeAssets: true,
-              outputStyle: 'expanded',
-              raw: 'preferred_syntax = :scss\n',
-              require: ['susy','breakpoint']
-            }
+        // Grunt-sass 
+        sass: {
+          app: {
+            files: [{
+              expand: true,
+              cwd: 'app/scss',
+              src: ['*.scss'],
+              dest: 'app/css',
+              ext: '.css'
+            }]
+          },
+          options: {
+            sourceMap: false, 
+            outputStyle: 'nested', 
           }
         },
 
         watch: {
             scss: {
               files: ['app/scss/**/*.scss'],
-              tasks: ['compass']
+              tasks: ['sass', 'autoprefixer']
             },
             css: {
                 files: ['app/css/**/*.css']
@@ -146,30 +149,7 @@ module.exports = function(grunt) {
           }
         },
 
-        imagemin: {
-            dynamic: {
-                files: [{
-                    expand: true,
-                    cwd: 'app/img/',
-                    src: ['**/*.{png,jpg,gif,svg,ico}'],
-                    dest: 'build/img/'
-                }]
-            }
-        },
-
         devcode : {
-          options :
-          {
-            html: true,        // html files parsing?
-            js: true,          // javascript files parsing?
-            css: true,         // css files parsing?
-            clean: true,       // removes devcode comments even if code was not removed
-            block: {
-              open: 'devcode', // with this string we open a block of code
-              close: 'endcode' // with this string we close a block of code
-            },
-            dest: 'dist'       // default destination which overwrites environment variable
-          },
           dist : {             // settings for task used with 'devcode:dist'
             options: {
                 source: 'build/',
@@ -183,20 +163,6 @@ module.exports = function(grunt) {
           }
         },
 
-        replace: {
-          example: {
-            src: ['app/css/style.css',],             // source files array (supports minimatch)
-            dest: 'app/css/style.t4.css',             // destination directory or file
-            replacements: [{
-              from: '../img/logo-b-l.png',                   // string replacement
-              to: '<t4 type="media" id="90325" formatter="image/*"/>'
-            },{
-              from: '../img/logo-b-s.png',                   // string replacement
-              to: '<t4 type="media" id="90320" formatter="image/*"/>'
-            }]
-          }
-        },
-
         concurrent: {
             watch: {
                 tasks: ['watch', 'compass', 'browserSync'],
@@ -206,13 +172,25 @@ module.exports = function(grunt) {
             }
         },
 
+        copy: {
+          main: {
+            files: [
+              // includes files within path and its sub-directories
+                {
+                expand: true, 
+                src: ['app/','!build/**','!bower_components/**','!node_modules/**','!.git/**','!library/scss/**'], dest: 'build/'
+                },
+            ],
+          },
+        }, 
+
 
     });
 
     // 3. Where we tell Grunt we plan to use this plug-in.
 
     // Sass
-    grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-combine-media-queries');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -222,34 +200,23 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
 
-    // Images
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-
     // html
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-includes');
 
     // Text Replacements
     grunt.loadNpmTasks('grunt-devcode');
-    grunt.loadNpmTasks('grunt-text-replace');
    
     // Browser Reload + File Watch
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-browser-sync');
 
-
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-
-    grunt.registerTask('init', ['compass','concat','includes:dev']);
+    grunt.registerTask('init', ['build']);
 
     // Run our devleoppment environment
     grunt.registerTask('dev', ['browserSync','watch']);
 
     // cleans directories, does everything for css, js, and images for deploy
-    grunt.registerTask('build', ['includes','imagemin', 'compass:dist', 'autoprefixer', 'cmq', 'cssmin', 'concat', 'uglify','includes:build','devcode:dist','htmlmin']);
-
-    // T4 template tags
-    grunt.registerTask('t4', ['grunt-text-replace']);
-
+    grunt.registerTask('build', ['autoprefixer', 'cmq', 'cssmin', 'concat', 'uglify','includes:build','devcode:dist']);
 };
