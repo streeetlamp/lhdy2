@@ -111,6 +111,15 @@ module.exports = function(grunt) {
             }
         },
 
+        copy: {
+          main: {
+            expand: true,
+            cwd: 'app/img/',
+            src: '**',
+            dest: 'build/img/',
+          },
+        },
+
         // Build the site using grunt-includes
         includes: {
           dev: {
@@ -159,6 +168,9 @@ module.exports = function(grunt) {
 
     // html
     grunt.loadNpmTasks('grunt-includes');
+
+    // building of things
+    grunt.loadNpmTasks('grunt-contrib-copy');
    
     // Browser Reload + File Watch
     grunt.loadNpmTasks('grunt-concurrent');
@@ -172,5 +184,5 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', ['browserSync','watch']);
 
     // cleans directories, does everything for css, js, and images for deploy
-    grunt.registerTask('build', ['includes', 'includes:build', 'sass', 'autoprefixer', 'cmq', 'cssmin', 'concat', 'uglify']);
+    grunt.registerTask('build', ['includes', 'includes:build', 'sass', 'autoprefixer', 'cmq', 'cssmin', 'concat', 'uglify', 'copy']);
 };

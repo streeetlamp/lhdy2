@@ -20,6 +20,7 @@
     "grunt-contrib-watch": "latest",
     "grunt-devcode": "latest",
     "grunt-includes": "latest",
-    "grunt-sass": "latest"
+    "grunt-sass": "latest",
+    "grunt-contrib-copy": "latest"
   }
 }
