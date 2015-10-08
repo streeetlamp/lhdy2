@@ -1,6 +1,7 @@
 {
   "name": "bread-pudding",
   "version": "0.2.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/VCUarts/bp.git"
