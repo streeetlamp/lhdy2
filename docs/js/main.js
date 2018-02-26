@@ -1,0 +1,1 @@
+!function(e){"use strict";(0,window.jQuery)(document).ready(function(){Modernizr.mq("only all")||jQuery("html").addClass("no-mediaqueries")})}();
