@@ -5,17 +5,32 @@ Author:
 Stylesheet: Base Stylesheet
 
 ******************************************************************/
-
+* {
+	background: #222;
+}
 html {
-
+	background: #222;
+	height: 100vh;
 }
 
 body {
-
+	background: #222;
+	a {
+		color: #0F9CE6;
+		text-decoration: none;
+		display: inline-block;
+		letter-spacing: .05em;
+		position: relative;
+		text-transform: uppercase;
+	}
 }
 
 #main {
+	background: #222;
 
 	@include container($wrapper-width);
-	
+	a {
+		color: #2075C3;
+		text-decoration: none;
+	}
 }
