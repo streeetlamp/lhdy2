@@ -5,28 +5,29 @@ Author:
 Stylesheet: Base Stylesheet
 
 ******************************************************************/
-* {
-	background: #222;
-}
+
 html {
-	background: #222;
+	background: #000000;
 	height: 100vh;
+	background-image: url("/img/dh.png");
+	background-position: center center;
+	background-repeat: no-repeat;
 }
 
 body {
-	background: #222;
 	a {
-		color: #0F9CE6;
+		color: rgb(8, 160, 241);
 		text-decoration: none;
 		display: inline-block;
 		letter-spacing: .05em;
 		position: relative;
 		text-transform: uppercase;
+		font-size: 1.5em;
+		text-shadow:-2px 2px 3px rgba(0,0, 0, .30);
 	}
 }
 
 #main {
-	background: #222;
 
 	@include container($wrapper-width);
 	a {
