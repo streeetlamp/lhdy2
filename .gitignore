@@ -9,7 +9,6 @@ npm-debug.log
 .DS_Store
 
 # ignore generated files
-build/
 app/bower_components/
 app/*.html
 app/css/*.css
