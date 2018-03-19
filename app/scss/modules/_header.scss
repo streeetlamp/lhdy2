@@ -10,7 +10,8 @@ Stylesheet: Header Stylesheet
 .header {
 
 	&__inner {
-		@include container($wrapper-width);
+		width: 100%;
+		// @include container($wrapper-width);
 	}
 
 	@at-root .site-title {
